@@ -1,4 +1,4 @@
-# Serving Multiple Domains with one Physical Server
+# Implementing Virtual Hosts in NGINX for Nodejs Based Applications
 
 ## Background
 
