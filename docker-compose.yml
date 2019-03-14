@@ -1,0 +1,29 @@
+version: "3.2"
+
+services:
+  app:
+    build:
+      context: ./docker-config
+      labels:
+        maintainer: "Ervinne Sodusta <ervinne.sodusta@nuworks.ph>"
+    image: node_nginx:latest
+    environment:
+        - NODE_ENV=development
+    container_name: node_nginx
+    volumes:
+      # host:container
+       - ${LOCAL_PATH}:/var/www/vhost/app/products/rnd/node_nginx
+    networks:
+       default:
+          ipv4_address: 192.168.13.1
+    tty: true
+    stdin_open: true
+    extra_hosts:
+      - "node-nginx.local:192.168.13.1"
+volumes:
+  mongodb_data:
+    driver: local
+networks:
+  default:
+    external:
+      name: docker-bridge-local
